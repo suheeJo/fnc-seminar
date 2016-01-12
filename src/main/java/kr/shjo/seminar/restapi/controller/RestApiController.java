@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import io.swagger.annotations.Api;
 import kr.shjo.seminar.restapi.model.MemberModel;
 import lombok.extern.slf4j.Slf4j;
 
+@Api(value="Rest API 세미나 테스트")
 @Slf4j
 @Controller
 public class RestApiController {
