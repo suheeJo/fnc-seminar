@@ -2,14 +2,18 @@ package kr.shjo.seminar.restapi.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import io.swagger.annotations.Api;
 import kr.shjo.seminar.restapi.model.MemberModel;
+import kr.shjo.seminar.restapi.model.MemberSaveParamModel;
 import lombok.extern.slf4j.Slf4j;
 
 @Api(value="Rest API 세미나 테스트")
@@ -17,17 +21,39 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class RestApiController {
 	
+	/**
+	* 멤버 목록을 반환한다.
+	* 
+	* @return
+	* @throws Exception
+	*/
 	@RequestMapping(value = "/members", method = RequestMethod.GET)
 	public @ResponseBody List<MemberModel> getMemberList() throws Exception {
-		log.info("########### getMemberList()");
+		log.debug("########### getMemberList()");
 		return null;
+	}
+	
+	/**
+	* 멤버 정보를 저장한다.
+	* 
+	* @param memberSaveParamModel
+	* @return
+	* @throws Exception
+	*/
+	@RequestMapping(value = "/members", method = RequestMethod.POST)
+	public @ResponseBody String insertMember(
+		@RequestBody @Valid MemberSaveParamModel memberSaveParamModel) throws Exception {
+		log.debug("########### insertMember()");
+		log.debug("########### memberSaveParamModel: {}", memberSaveParamModel);
+		
+		return "SUCCESS";
 	}
 	
 	@RequestMapping(value = "/members/{memberId}", method = RequestMethod.GET)
 	public @ResponseBody MemberModel getMember(
 		@PathVariable long memberId) throws Exception {
-		log.info("########### getMember()");
-		log.info("########### memberId: {}", memberId);
+		log.debug("########### getMember()");
+		log.debug("########### memberId: {}", memberId);
 		
 		MemberModel memberModel = new MemberModel(memberId, "shjo72", "조수희", "shjo72@nexon.co.kr", 26);
 		
