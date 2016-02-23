@@ -14,30 +14,18 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
-		<!-- validation -->
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>1.1.0.Final</version>
-		</dependency>
+		<!-- jpa -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>5.2.2.Final</version>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.1.0.Final</version>
 		</dependency>
 	
-		<!-- swagger -->
+		<!-- h2 -->
 		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>2.2.2</version>
-		</dependency>
-
-		<!-- jackson -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.6.4</version>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.191</version>
 		</dependency>
 	
 		<!-- project lombok -->
