@@ -5,7 +5,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
