@@ -29,58 +29,41 @@ public class JpaTestCase {
 	
 	@Test
 	public void deleteTeest() throws Exception {
-		control(emf, new Logic() {
-			
-			@Override
-			public void logic(EntityManager em) {
-				long memberId = 5;
-				Member member = em.find(Member.class, memberId);
-				em.remove(member);
-			}
+		control(emf, (em) -> {
+			long memberId = 5;
+			Member member = em.find(Member.class, memberId);
+			em.remove(member);			
 		});
 	}
 	
 	@Test
 	public void updateTest() throws Exception {
-		control(emf, new Logic() {
+		control(emf, (em) -> {
+			long memberId = 1;
+			Member member = em.find(Member.class, memberId);
+			member.setEmail("suhee@mail.co.kr");
 			
-			@Override
-			public void logic(EntityManager em) {
-				long memberId = 1;
-				Member member = em.find(Member.class, memberId);
-				member.setEmail("suhee@mail.co.kr");
-				
-				Member updateMember = em.find(Member.class, memberId);
-				System.out.println(updateMember.getId() + ". " + updateMember.getName() + ": " + updateMember.getEmail());
-			}
+			Member updateMember = em.find(Member.class, memberId);
+			System.out.println(updateMember.getId() + ". " + updateMember.getName() + ": " + updateMember.getEmail());			
 		});
 	}
 	
 	@Test
 	public void getTest() throws Exception {
-		control(emf, new Logic() {
-			
-			@Override
-			public void logic(EntityManager em) {
-				long memberId = 1;
-				Member member = em.find(Member.class, memberId);
-				System.out.println(member.getId() + ". " + member.getName() + ": " + member.getEmail());
-			}
+		control(emf, (em) -> {
+			long memberId = 1;
+			Member member = em.find(Member.class, memberId);
+			System.out.println(member.getId() + ". " + member.getName() + ": " + member.getEmail());			
 		});
 	}
 	
 	@Test
 	public void inserTest() throws Exception {
-		control(emf, new Logic() {
-			
-			@Override
-			public void logic(EntityManager em) {
-				Member member = new Member();
-				member.setName("조수희3");
-				member.setEmail("test3@test.co.kr");
-				em.persist(member);
-			}
-			
+		control(emf, (em) -> {
+			Member member = new Member();
+			member.setName("조수희3");
+			member.setEmail("test3@test.co.kr");
+			em.persist(member);
 		});
 	}
 	
