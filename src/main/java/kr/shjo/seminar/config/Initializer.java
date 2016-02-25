@@ -19,8 +19,6 @@ public class Initializer implements WebApplicationInitializer {
 		rootContext.register(RootConfig.class);
 		servletContext.addListener(new ContextLoaderListener(rootContext));
 		
-		servletContext.addFilter("SwaggerCORSFilter", SwaggerCORSFilter.class).addMappingForUrlPatterns(null, false, "/*");
-		
 		this.addDispatcherServlet(servletContext);
 		this.addUtf8CharacterEncodingFilter(servletContext);
 	}
@@ -32,7 +30,6 @@ public class Initializer implements WebApplicationInitializer {
 		ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", new DispatcherServlet(applicationContext));
 		dispatcher.setLoadOnStartup(1);
 		dispatcher.addMapping("/");
-		dispatcher.setInitParameter("dispatchOptionsRequest", "true"); // CORS 를 위해서 option request 도 받아들인다.
 	}
 	
 	private void addUtf8CharacterEncodingFilter(ServletContext servletContext) {
